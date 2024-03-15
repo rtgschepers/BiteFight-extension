@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "BiteFight Extension",
+  "description": "Make the BiteFight life a little easier",
+  "version": "1.0",
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [{
+    "matches": ["https://*.bitefight.gameforge.com/*"],
+    "js": ["src/js/content_script.js"],
+    "css": ["src/css/style.css"]
+  }],
+  "web_accessible_resources": [{
+    "matches": ["https://*.bitefight.gameforge.com/*"],
+    "resources": ["src/js/*"]
+  }]
+}
