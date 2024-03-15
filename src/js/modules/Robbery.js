@@ -27,9 +27,11 @@ export default class Robbery {
     static addAutoFarmButtons() {
         /** @type {NodeListOf[Node]} */
         const containers = document.querySelectorAll('#humanhunt div[class="btn-left center"]');
-        for (const i in containers) {
+        for (let i = 0; i < containers.length; i++) {
+            console.log(i);
             const container = containers[i];
             const robbery = this.#robberies[i];
+            console.log(containers, container);
 
             const origCont = container.cloneNode(true);
             container.classList.remove(...container.classList);
