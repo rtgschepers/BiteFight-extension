@@ -1,3 +1,5 @@
+import {ucFirst, translate} from "../helpers/functions.js";
+
 export default class Graveyard {
     static displayWorkFinishTime() {
         setInterval(this.#updateFinishTime, 1000);
@@ -11,12 +13,12 @@ export default class Graveyard {
 
         const endTimeEl = document.createElement('p');
         endTimeEl.style.textAlign = 'center';
-        endTimeEl.innerText = `Work is done at ${endTime}`;
+        endTimeEl.innerText = `${ucFirst(translate('work will be done at'))} ${endTime}`;
         timeEl.parentNode.after(endTimeEl);
 
         const warning = document.createElement('p');
         warning.style.textAlign = 'center';
-        warning.innerHTML = `<span style="color:red;">Warning:</span> Ending work early results in no rewards, even if 30 minutes have passed.`;
+        warning.innerHTML = `<span style="color:red;">${ucFirst(translate('warning'))}:</span> ${ucFirst('ending work early results in no rewards, even if 30 minutes have passed.')}`;
         endTimeEl.after(warning);
     }
 
@@ -29,7 +31,7 @@ export default class Graveyard {
         const td = tr.firstElementChild ?? document.createElement('td');
         td.classList.add('no-bg');
         td.colSpan = 3;
-        td.innerText = `Work will be done at ${endTime}`;
+        td.innerText = `${ucFirst(translate('work will be done at'))} ${endTime}`;
         tr.appendChild(td);
         select.parentNode.parentNode.after(tr);
     }

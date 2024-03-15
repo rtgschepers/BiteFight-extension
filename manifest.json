@@ -13,6 +13,6 @@
   }],
   "web_accessible_resources": [{
     "matches": ["https://*.bitefight.gameforge.com/*"],
-    "resources": ["src/js/*"]
+    "resources": ["src/js/*", "i18n/*"]
   }]
 }
