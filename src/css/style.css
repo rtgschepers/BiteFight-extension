@@ -1,3 +1,15 @@
 input:disabled {
     background-color: unset!important;
 }
+
+#content p.counter {
+    padding: 15px 15px 0;
+}
+
+#content p.counter ~ .counter {
+    border-top: unset;
+}
+
+#content p.counter:has(+ form) {
+    padding-bottom: 15px;
+}

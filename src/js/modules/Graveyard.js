@@ -5,6 +5,7 @@ export default class Graveyard {
         setInterval(this.#updateFinishTime, 1000);
         const select = document.querySelector('select[name="workDuration"]');
         select.addEventListener('change', this.#updateFinishTime);
+        this.#updateFinishTime();
     }
 
     static displayCurrentWorkFinishTime() {
@@ -12,13 +13,13 @@ export default class Graveyard {
         const endTime = this.#formatEndTime(timeEl.firstChild.textContent);
 
         const endTimeEl = document.createElement('p');
-        endTimeEl.style.textAlign = 'center';
-        endTimeEl.innerText = `${ucFirst(translate('work will be done at'))} ${endTime}`;
+        endTimeEl.classList.add('counter');
+        endTimeEl.innerHTML = `${ucFirst(translate('work will be done at'))} <span>${endTime}</span>`;
         timeEl.parentNode.after(endTimeEl);
 
         const warning = document.createElement('p');
-        warning.style.textAlign = 'center';
-        warning.innerHTML = `<span style="color:red;">${ucFirst(translate('warning'))}:</span> ${ucFirst('ending work early results in no rewards, even if 30 minutes have passed.')}`;
+        warning.classList.add('counter');
+        warning.innerHTML = `<span style="color:red;">${ucFirst(translate('warning'))}:</span> ${ucFirst(translate('ending work early results in no rewards, even if 30 minutes have passed'))}.`;
         endTimeEl.after(warning);
     }
 
