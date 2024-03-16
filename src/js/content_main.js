@@ -1,12 +1,16 @@
-import Robbery from "./modules/Robbery.js";
-import Graveyard from "./modules/Graveyard.js";
-import Grotte from "./modules/Grotte.js";
+import Profile from "./pages/Profile.js";
+import Robbery from "./pages/Robbery.js";
+import Graveyard from "./pages/Graveyard.js";
+import Grotte from "./pages/Grotte.js";
 import {loadTranslations} from "./helpers/functions.js";
 
 export async function main() {
     await loadTranslations('nl');
 
     switch (window.location.pathname) {
+        case '/profile/index':
+            Profile.enhanceIndex();
+            break;
         case '/city/graveyard':
             Graveyard.displayWorkFinishTime();
             break;
