@@ -19,3 +19,22 @@ export async function loadTranslations(lang) {
         i18n = null;
     }
 }
+
+export function formatEndTime(timeStr) {
+    const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+    const now = new Date();
+
+    now.setHours(now.getHours() + hours);
+    now.setMinutes(now.getMinutes() + minutes);
+    now.setSeconds(now.getSeconds() + seconds)
+
+    const formattedHours = ('0' + now.getHours()).slice(-2);
+    const formattedMinutes = ('0' + now.getMinutes()).slice(-2);
+    const formattedSeconds = ('0' + now.getSeconds()).slice(-2);
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+export function getDataFromTab(tabId) {
+    const cells = document.querySelectorAll(`#${tabId} td:nth-child(2)`);
+    return Array.from(cells).map(cell => cell.textContent);
+}

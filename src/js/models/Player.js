@@ -1,7 +1,10 @@
+import Talents from "./Talents.js";
+import {getDataFromTab} from "../helpers/functions.js";
+
 export default class Player {
-    #infoBarData = null;
-    #characterData = null;
-    #talentData = null;
+    static #infoBarData = null;
+    static #characterData = null;
+    static talents = Talents;
 
     static #getInfoBarData() {
         if (!this.#infoBarData) {
@@ -14,21 +17,9 @@ export default class Player {
 
     static #getCharacterData() {
         if (!this.#characterData) {
-            this.#characterData = this.#getDataFromTab('character_tab');
+            this.#characterData = getDataFromTab('character_tab');
         }
         return this.#characterData;
-    }
-
-    static #getTalentData() {
-        if (!this.#talentData) {
-            this.#talentData = this.#getDataFromTab('talents_tab');
-        }
-        return this.#talentData;
-    }
-
-    static #getDataFromTab(tabId) {
-        const cells = document.querySelectorAll(`#${tabId} table tr td:nth-child(2)`);
-        return Array.from(cells).map(cell => cell.textContent);
     }
 
     static get gold() {
@@ -75,11 +66,11 @@ export default class Player {
         return this.#getCharacterData()[1] ?? '';
     }
 
-    static get playerId() {
+    static get id() {
         return parseInt(this.#getCharacterData()[2] ?? 0);
     }
 
-    static get playerName() {
+    static get name() {
         return this.#getCharacterData()[3] ?? '';
     }
 
@@ -91,15 +82,16 @@ export default class Player {
         return parseInt(this.#getCharacterData()[7] ?? 0);
     }
 
-    static get availableTalentPoints() {
-        return parseInt(this.#getTalentData()[0] ?? 0);
+    static get healingTime() {
+        const content = this.#getCharacterData()[8] ?? '';
+        if(content === '') {
+            return content;
+        }
+
+        return content.substring(0, 8);
     }
 
-    static get spentTalentPoints() {
-        return parseInt(this.#getTalentData()[1] ?? 0);
-    }
-
-    static get maxTalentPoints() {
-        return parseInt(this.#getTalentData()[2] ?? 0);
+    static get APRegenTime() {
+        return this.#getCharacterData()[8] ?? '';
     }
 }

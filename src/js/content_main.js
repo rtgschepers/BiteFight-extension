@@ -8,6 +8,7 @@ export async function main() {
     await loadTranslations('nl');
 
     switch (window.location.pathname) {
+        case '/profile':
         case '/profile/index':
             Profile.enhanceIndex();
             break;
