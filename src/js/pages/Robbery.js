@@ -1,4 +1,5 @@
 import Player from '../models/Player.js';
+import {ucFirst} from "../helpers/functions.js";
 
 export default class Robbery {
     static #robberies = {
@@ -24,14 +25,19 @@ export default class Robbery {
         }
     }
 
+    static capitalizeFarmText() {
+        const btn = document.querySelector('button[onclick="doHunt(1)"]');
+        if (btn) {
+            btn.innerText = ucFirst(btn.innerText);
+        }
+    }
+
     static addAutoFarmButtons() {
         /** @type {NodeListOf[Node]} */
         const containers = document.querySelectorAll('#humanhunt div[class="btn-left center"]');
         for (let i = 0; i < containers.length; i++) {
-            console.log(i);
             const container = containers[i];
             const robbery = this.#robberies[i];
-            console.log(containers, container);
 
             const origCont = container.cloneNode(true);
             container.classList.remove(...container.classList);

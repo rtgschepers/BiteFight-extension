@@ -21,6 +21,7 @@ export async function main() {
             Graveyard.displayCurrentWorkFinishTime();
             break;
         case '/robbery/index':
+            Robbery.capitalizeFarmText();
             Robbery.addAutoFarmButtons();
             break;
         case '/city/grotte':
