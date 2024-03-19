@@ -75,11 +75,11 @@ export default class Player {
     }
 
     static get topScorePosition() {
-        return parseInt(this.#getCharacterData()[6] ?? 0);
+        return parseInt(this.#getCharacterData()[6]?.replace('.', '') ?? 0);
     }
 
     static get allianceTopScorePosition() {
-        return parseInt(this.#getCharacterData()[7] ?? 0);
+        return parseInt(this.#getCharacterData()[7].replace('.', '') ?? 0);
     }
 
     static get healingTime() {
