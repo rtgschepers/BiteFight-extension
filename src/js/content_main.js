@@ -3,9 +3,11 @@ import Robbery from "./pages/Robbery.js";
 import Graveyard from "./pages/Graveyard.js";
 import Grotte from "./pages/Grotte.js";
 import {loadTranslations} from "./helpers/functions.js";
+import AllPages from "./pages/AllPages.js";
 
 export async function main() {
     await loadTranslations('nl');
+    AllPages.stylizationFixes();
 
     switch (window.location.pathname) {
         case '/profile':
