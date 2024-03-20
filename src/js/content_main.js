@@ -9,7 +9,9 @@ export async function main() {
     await loadTranslations('nl');
     AllPages.stylizationFixes();
 
-    switch (window.location.pathname) {
+    let pathname = window.location.pathname;
+    pathname = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+    switch (pathname) {
         case '/profile':
         case '/profile/index':
             Profile.enhanceIndex();
